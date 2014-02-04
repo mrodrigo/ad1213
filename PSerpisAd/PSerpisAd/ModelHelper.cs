@@ -39,6 +39,31 @@ namespace Serpis.Ad
 			dataReader.Close ();
 			return obj;
 		}
+		public static string GetUpdate(Type type){
+			string keyParameter = mull;
+			List <string> fieldParameters = new List <string> ();
+
+			foreach (PropertyInfo propertyInfo in type.GetProperties ()) {
+				if (propertyInfo.IsDefined (typeof(KeyAttribute), true))
+					keyParameter = formatParameter (propertyInfo.Name.ToLower ());
+				else if (propertyInfo.IsDefined (typeof(FieldAttribute), true))
+					fieldParameters.Add (formatParameter (propertyInfo.Name.ToLower ()));
+			}
+			string tableName = type.Name.ToLower ();
+
+			return string.Format ("update {0} set {1} where {2}", 
+				tableName, string.Join (", ", fieldParameters), keyParameter);
+		}
+
+		public static void Save(object obj) {
+			IDbCommand updateDbCommand = App.Instance.DbConnection.CreateCommand ();
+			updateDbCommand.CommandText = "";
+			DbCommandUtil.AddParameter (updateDbCommand, "nombre", categoria.Name);
+			updateDbCommand.ExecuteNonQuery ();
+		}
+
 	}
+
+
 }
 
