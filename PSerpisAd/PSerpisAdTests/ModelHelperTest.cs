@@ -41,23 +41,6 @@ namespace Serpis.Ad
 			expected = "select nombre, precio from modelhelperbar where id=";
 			Assert.AreEqual (expected, selectText);
 		}
-		/* he estado pensando 
-		[Test()]
-		public void GetUpdate ()
-		{
-			string updateText;
-			string expected;
-
-			selectText = ModelHelper.GetSelect (typeof(ModelHelperFoo));
-			expected = "update nombre from modelhelperfoo where id=";
-			Assert.AreEqual (expected, updateText);
-
-			selectText = ModelHelper.GetSelect (typeof(ModelHelperBar));
-			expected = "update nombre, precio from modelhelperbar where id=";
-			Assert.AreEqual (expected, updateText);
-		}
-*/
-
 	}
 }
 
