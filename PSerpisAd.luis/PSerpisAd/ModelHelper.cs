@@ -62,6 +62,9 @@ namespace Serpis.Ad
 			dataReader.Close ();
 			return obj;
 		}
+		public static void Insert(object obj){
+			ModelInfo modelinfo;
+		}
 	}
 }
 
