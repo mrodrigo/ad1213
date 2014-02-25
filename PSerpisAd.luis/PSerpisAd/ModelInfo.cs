@@ -31,6 +31,15 @@ namespace Serpis.Ad
 					string.Join(", ", fieldNames),
 					string.Join(", ", fieldNames));
 			}
+
+		private static void PutDelete(Type type) {
+			List<string> fieldParameters = new List<string>();
+			foreach (int id in FieldNames){
+				fieldParameters.Add(formatParameter(id));
+			}
+			deleteText=string.Format ("DELETE FROM {1} WHERE {2}=",
+				tableName,string.Join(", ", fieldParameters), formatParameter(KeyId));
+		}
 		public string PutInsert{ get { return null; } }
 		public PropertyInfo[] fieldsPropertyInfos{ get { return null; } }
 
