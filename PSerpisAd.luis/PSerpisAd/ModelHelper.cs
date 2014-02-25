@@ -42,7 +42,7 @@ namespace Serpis.Ad
 			foreach (int id in FieldNames){
 				fieldParameters.Add(formatParameter(id));
 			}
-			updateText=string.Format ("DELETE FROM {1} WHERE {2}=",
+			deleteText=string.Format ("DELETE FROM {1} WHERE {2}=",
 				tableName,string.Join(", ", fieldParameters), formatParameter(KeyId));
 		}
 		
